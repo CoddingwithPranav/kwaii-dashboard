@@ -1,0 +1,19 @@
+<div class=" ">
+  <div class=" md:p-5 p-3 w-full ml-3  md:w-5 secondaryColor md:mx-auto mt-5 ">
+    <div class="field">
+      <label for="firstname1">Email</label>
+      <input id="firstname1" pInputText [(ngModel)]="email" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+  </div>
+  <div class="field flex flex-column mb-5">
+      <label for="lastname1">Password</label>
+      <p-password  [(ngModel)]="password" [feedback]="false" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></p-password>
+
+  </div>
+
+  <div class="text-center">
+    <p-button (click)="Login()"  label="Save" ></p-button>
+
+  </div>
+  </div>
+
+</div>

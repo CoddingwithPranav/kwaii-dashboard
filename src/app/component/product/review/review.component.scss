@@ -1,0 +1,31 @@
+div{
+  color: white !important;
+}
+.addbtn  {
+  cursor: pointer;
+  span{
+    color: white;
+  }
+  &:hover{
+    span{
+      color: #bbff00;
+    }
+    i{
+      color: #bbff00;
+    }
+
+  }
+
+}
+.topic {
+  *{
+    color: white;
+    margin-bottom: 1rem;
+  }
+  #descriptiion{
+    font-size: 1rem;
+  }
+}
+
+
+

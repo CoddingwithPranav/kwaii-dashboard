@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kwaiisoft": {
+      "hosting": {
+        "kwaii-dashboard": [
+          "kwaii-dashboard"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kwaiisoft"
+  }
+}

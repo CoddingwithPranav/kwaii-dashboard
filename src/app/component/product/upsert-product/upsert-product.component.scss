@@ -1,0 +1,65 @@
+div{
+  color: white !important;
+}
+.addbtn  {
+  cursor: pointer;
+  span{
+    color: white;
+  }
+  &:hover{
+    span{
+      color: #bbff00;
+    }
+    i{
+      color: #bbff00;
+    }
+
+  }
+
+}
+.p-float-label > label {
+  left: 0.75rem;
+  color: white;
+  transition-duration: 0.2s;
+}
+input , textarea{
+  background: #393E46;
+  color: white;
+}
+::ng-deep .p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #bbff00;
+  background: #bbff00;
+  :hover{
+    border-color: #bbff00;
+  }
+}
+::ng-deep  .p-radiobutton .p-radiobutton-box {
+  background: #222831;
+  color: #222831;
+}
+::ng-deep   .p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #ffffff;
+  color: #374151;
+  padding: 0.5rem !important;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+::ng-deep  .p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #4b5563;
+  padding: 0.5rem !important;
+}
+.custom-upload{
+  cursor: pointer;
+  background-color: rgb(175, 173, 173);
+}
+.previweImg{
+  width: 50%;
+  aspect-ratio: 3/2;
+}
+@media screen and (max-width: 768px) {
+  .previweImg{
+    width: 100%;
+  }
+}

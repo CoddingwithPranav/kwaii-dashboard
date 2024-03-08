@@ -1,0 +1,48 @@
+<form #f="ngForm"  (ngSubmit)="onSubmit(f)" >
+  <div class="container m-8 flex justify-content-between mx-1">
+    <h2 >Category </h2>
+    <p-button type="button" (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button>
+
+  </div>
+  <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <div class="m-4 font-bold white-space-nowrap">Add Category</div>
+        </div>
+    </ng-template>
+    <div class="m-4">
+      <div class="flex flex-column gap-2">
+        <label for="category">Category</label>
+        <input [(ngModel)]="formCategiory" name="category"  #newCategories = 'ngModel' required  ngModel class="p-2" pInputText id="category"  autocomplete="off"/>
+        <small *ngIf="newCategories.touched && newCategories.invalid" class="text-red-600" >Enter your Category</small>
+    </div>
+     </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-upload
+        " (click)="visible = false" label="Save" pAutoFocus [autofocus]="true" type="submit" (click)="onSubmit(newCategories)"></p-button>
+    </ng-template>
+  </p-dialog>
+</form>
+<div class="card">
+  <p-table [value]="categoryArray" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr class="py-2">
+              <th>Category</th>
+              <th class="text-right">Action </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-category >
+          <tr>
+              <td>{{ category.category }}</td>
+              <td class="flex justify-content-end ">
+                <p-button class="mr-1" (click)="showDialog()" (click)="onEdit(category.category,category.id)" icon="pi pi-pencil" label="Edit"></p-button>
+
+                <p-button (click)="onDelete(category.id)"  icon="pi pi-trash" label="Delete"></p-button>
+
+
+
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

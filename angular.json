@@ -37,9 +37,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/@ngneat/hot-toast/src/styles/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -106,6 +112,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "kwaii-dashboard:build:production",
+              "serveTarget": "kwaii-dashboard:serve:production"
+            },
+            "development": {
+              "buildTarget": "kwaii-dashboard:build:development",
+              "serveTarget": "kwaii-dashboard:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

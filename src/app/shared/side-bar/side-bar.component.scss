@@ -1,0 +1,39 @@
+::ng-deep .p-button {
+  color: #ffffff;
+  background: #bbff00;
+  border: 1px solid #bbff00;
+  span{
+    padding: 0.5rem;
+    color: #41424a;
+    font-size: 1rem;
+  }
+
+}
+.logIMg{
+  aspect-ratio: 1/1;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.activeRouter{
+
+  border-radius: 6px !important;
+  background-color: #bbff00;
+  color: #41424a !important;
+ span, i{
+  color: #41424a !important;
+ }
+
+}
+
+.hover{
+  :hover{
+
+
+    background-color: white !important;
+    *{
+      color: #41424a;
+    }
+  }
+}

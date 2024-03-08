@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/kwaii-dashboard/browser",
+    "site": "kwaii-dashboard",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

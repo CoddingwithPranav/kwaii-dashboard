@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
+import { Sidebar } from 'primeng/sidebar';
+import { LoginService } from './shared/service/login.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'kwaii-dashboard';
+ loginService = inject(LoginService);
+ ngOnInit(){
+  this.loginService.checkUserLoggedIn();
+ }
 }

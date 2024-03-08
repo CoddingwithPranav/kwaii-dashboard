@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./assets/scss/variables.scss";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+// @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "primeicons/primeicons.css";
+/* Order */
+// @layer reset, primeng;
+
+$baseColor:#EEEEEE;
+$primaryColor:#bbff00;
+$secondaryColor:#393E46;
+$backgroudColor:#222831;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color:$backgroudColor ;
+}
+.baseColor{
+  background-color: $baseColor !important;
+}
+.primaryColorBack{
+  background-color: $primaryColor !important;
+}
+.primaryColorText{
+  color: $primaryColor !important;
+}
+.secondaryColor{
+  background-color: $secondaryColor !important;
+}
+.p-dialog .p-dialog-footer
+{
+    border-top: 0 none;
+    background: #ffffff;
+    color: #4b5563;
+    padding: 0 1.5rem 1.5rem 1.5rem !important;
+    text-align: right;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  .p-dropdown
+{
+    background: transparent;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+    padding: 0.7rem !important;
+    width: 57rem;
+    span{
+      color:white ;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .p-dropdown {
+        width: 19rem; /* Adjusted width for smaller screens */
+    }
+}
+  .p-dropdown-items
+  {
+      list-style-type: none;
+      background: #222831;
+      :hover{
+        div{
+
+          color: #222831 !important;
+        }
+      }
+    }
+    .p-dropdown-filter
+    {
+        width: 100%;
+        padding: 0.6rem !important;
+      }

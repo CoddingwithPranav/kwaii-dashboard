@@ -1,0 +1,274 @@
+<div class="flex flex-column">
+  <div
+    class="flex align-items-center justify-content-center h-4rem font-bold border-round m-2"
+  >
+    <div class="flex align-content-center w-full flex-wrap">
+      <div
+        routerLink="/product-list"
+        class="addbtn flex align-items-center justify-content-center text-xl text-white align-content-center font-bold mt-2"
+      >
+        <i class="mr-1 pi pi-arrow-left"></i><span> Add Product</span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex flex-column md:flex-row md:mr-4 justify-content-center md:p-5 flex-wrap h-auto font-bold border-round md:m-2"
+  >
+    <p-timeline [value]="events" layout="horizontal" align="top" class="w-full">
+      <ng-template pTemplate="marker" let-event>
+        <span
+          class="custom-marker m-2 text-white shadow-2"
+          [style.backgroundColor]="event.color"
+        >
+          <i [ngClass]="'pi pi-check-circle'"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event class="text-white">
+        {{ event }}
+      </ng-template>
+    </p-timeline>
+<form class="w-full" [formGroup]="productForm" (ngSubmit)="review()">
+
+  <div class="w-full mt-5">
+    <div class="flex flex-column w-full my-2">
+      <div class="flex  flex-column md:flex-row gap-2 md:gap-0 w-full">
+        <div class="w-2 text-left text-white font-bold md:mx-5 border-round">
+          Title*
+        </div>
+        <div class="w-full">
+          <input
+            type="text"
+            class="w-full p-3 border-round-lg "
+            pInputText
+           formControlName="title"
+          />
+          @if (fs['title'].touched && fs['title'].invalid) {
+            <h5 class="my-1 text-red-600">Provide Title</h5>
+          }
+        </div>
+
+      </div>
+    </div>
+    <div class="flex flex-column w-full my-2">
+      <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+        <div class="w-2 text-left text-white font-bold md:mx-5 border-round">
+          Category
+        </div>
+        <div class="w-full">
+          <div class="card flex justify-content-center">
+            <p-dropdown [options]="countries"  [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
+                <ng-template pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedCountry.code.toLowerCase()" style="width: 18px"/>
+                        <div>{{ selectedCountry.name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-country pTemplate="item">
+                    <div class="flex align-items-center gap-2">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" style="width: 18px"/>
+                        <div>{{ country.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+          @if (fs['title'].touched && fs['title'].invalid) {
+            <h5 class="my-1 text-red-600">Provide Title</h5>
+          }
+        </div>
+
+      </div>
+    </div>
+    <div class="flex flex-column w-full my-3">
+      <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+        <div class="w-2 text-left  text-white font-bold md:mx-5 border-round">
+          Description
+        </div>
+        <div class="w-full">
+          <textarea
+            class="w-full p-3 border-round-lg"
+            rows="5"
+            cols="30"
+            pInputTextarea
+            formControlName="description"
+          ></textarea>
+          @if (fs['description'].touched && fs['description'].invalid) {
+            <h5 class="my-1 text-red-600">Provide Description</h5>
+          }
+        </div>
+      </div>
+      <div class="flex flex-column w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="w-2 text-left f text-white font-bold md:mx-5 border-round">
+            Details*
+          </div>
+          <div class="w-full">
+          @if(isInDom){
+            <!-- <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="details"></angular-editor> -->
+          }
+          <textarea
+          class="w-full p-3 border-round-lg"
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="details"
+        ></textarea>
+        @if (fs['details'].touched && fs['details'].invalid) {
+          <h5 class="my-2 text-red-600">Provide Details</h5>
+        }
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="w-2 text-left  text-white font-bold md:mx-5 border-round">
+            Price*
+          </div>
+          <div class="w-full flex flex-column justify-content-between">
+
+
+              <p-inputNumber formControlName="price" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="0.25"
+    decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="currency" currency="EUR"></p-inputNumber>
+
+              @if (fs['price'].touched && fs['price'].invalid) {
+                <h5 class="my-2 text-red-600">Provide Price</h5>
+              }
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="w-2 text-left f text-white font-bold md:mx-5 border-round">
+            Discount*
+          </div>
+          <div class="w-full flex flex-column justify-content-between">
+
+
+
+
+              <p-inputNumber formControlName="discount" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="0.25"
+              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="currency" currency="EUR"></p-inputNumber>
+
+              @if (fs['discount'].touched && fs['discount'].invalid) {
+                <h5 class="my-1 text-red-600">Provide Discount</h5>
+              }
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="md:w-2 text-left  text-white font-bold md:mx-5 border-round">
+            Product Status
+          </div>
+          <div class="w-full">
+            <div class="card ">
+              <div class="flex  flex-wrap gap-3">
+                <div class="flex align-items-center">
+                  <p-radioButton
+                    name="isActive"
+                    value="true"
+                    formControlName="isActive"
+                    inputId="ingredient1"
+                  ></p-radioButton>
+                  <label for="ingredient1" class="ml-2">Active</label>
+                </div>
+
+                <div class="flex align-items-center">
+                  <p-radioButton
+                    name="isActive"
+                    value="false"
+                    formControlName="isActive"
+                    inputId="ingredient2"
+                  ></p-radioButton>
+                  <label for="ingredient2" class="ml-2">InActive</label>
+                </div>
+
+                @if (fs['isActive'].touched && fs['isActive'].invalid) {
+                  <h5 class="my-1 text-red-600">Provide Product Status</h5>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="md:w-2 text-left f text-white font-bold md:mx-5 border-round">
+            Featured
+          </div>
+          <div class="w-full">
+            <div class="card ">
+              <div class="flex flex-wrap gap-3">
+                <p-toggleButton
+                formControlName="featured" onLabel="Yes" offLabel="No"></p-toggleButton>
+                @if (fs['featured'].touched && fs['featured'].invalid) {
+                  <h5 class="my-1 text-red-600">Provide Featured</h5>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex flex-column md:flex-row gap-2 md:gap-0 w-full">
+          <div class="w-2 text-left f text-white font-bold md:mx-5 border-round">
+            Image
+          </div>
+          <div class="w-full">
+            <div class="card ">
+              <div class="flex flex-column flex-wrap justify-content-between  gap-3">
+                <p-button (click)="showDialog()" icon="pi pi-external-link" label="Add Img"></p-button>
+                <p-dialog header="Image" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw', padding:'1rem', background:'white' }" [draggable]="false" [resizable]="false">
+                  @if(isInDom){
+                    <input hidden #imageUpload type="file" (change)="fileChangeEvent($event)" class="p-1rem" />
+                <p-button (click)="imageUpload.click()" icon="pi pi-upload" label="Upload"></p-button>
+
+               <div class="">
+                <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="3/2"
+                format="png"
+                output="base64"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded($event)"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+               </div>
+
+               @if (croppedImage =='../../../../assets/default.jpg') {
+                <div class="w-full h-8rem  custom-upload flex align-items-center justify-content-center " (click)="imageUpload.click()"  >
+
+                <i class="pi pi-image text-6xl" ></i></div>
+               }
+
+              }
+              </p-dialog>
+
+                <img [src]="croppedImage" class="previweImg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full my-3">
+        <div class="flex w-full">
+          <div   class="w-full text-right  text-white font-bold md:mx-5 border-round">
+            <p-button type="submit"    label="Next" icon="pi pi-chevron-right"></p-button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+  </div>
+</div>

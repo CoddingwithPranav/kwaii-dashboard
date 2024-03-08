@@ -1,0 +1,43 @@
+<div class="ml-6 flex flex-column">
+  <div
+    class=" flex align-items-center justify-content-center h-4rem font-bold border-round m-2"
+  >
+    <div
+      class="  flex flex-row justify-content-between align-content-center w-full md:flex-wrap"
+    >
+      <div
+        class="flex align-items-center justify-content-center text-3xl text-white align-content-center font-bold mt-2"
+      >
+        Product
+      </div>
+      <div
+
+        class="flex align-items-center justify-content-center w-20rem m-2"
+      >
+        <p-button (click)="NavigateToAdd()" label="Add Product" severity="success" class="p-5"></p-button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex justify-content-center p-5 flex-wrap h-auto font-bold border-round m-2"
+  >
+
+
+    @defer(on timer(1s)) {
+      @for (item of productData; track $index) {
+        <app-card [item]="item" (itemId)="NavigateToEdit($event)"></app-card>
+        }
+    } @placeholder(minimum 500ms) {
+
+
+        <app-skeleton></app-skeleton>
+      <app-skeleton></app-skeleton>
+      <app-skeleton></app-skeleton>
+      <app-skeleton></app-skeleton>
+      <app-skeleton></app-skeleton>
+      <app-skeleton></app-skeleton>
+
+
+    }
+  </div>
+</div>

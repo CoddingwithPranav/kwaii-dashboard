@@ -9,8 +9,13 @@ import { Product } from '../models/product';
 export class CardComponent {
 @Input() item!:Product;
 @Output() itemId = new EventEmitter<string>();
+@Output() deleteItemId = new EventEmitter<string>();
+
 
 sendId(value: string) {
   this.itemId.emit(value);
+}
+sendIdtoDelete(id:string){
+  this.deleteItemId.emit(id)
 }
 }

@@ -4,9 +4,8 @@
 
   </div>
   <div class="body">
-    <span class="category">cloth</span>
-    <h1>{{item.title}}</h1>
-    <p>{{item.description}}</p>
+    <h1>{{item.title.length > 30 ? item.title.slice(1, 20) +'...': item.title}}</h1>
+    <p>{{item.description.slice(0,50)}}...</p>
     <div>
       <span>Price</span>
       <h2 class="ml-1">${{item.price}}</h2>
@@ -16,6 +15,6 @@
   </div>
   <div class="footer ">
     <a class="btn edit" (click)="sendId(item.id ?? '')"> <i class="pi pi-file-edit" style="font-size: 15px"></i> Edit</a>
-    <a class="btn delete"  (click)="sendId(item.id ?? '')"> <i class="pi pi-trash" style="font-size: 15px"></i> Delete</a>
+    <a class="btn delete"  (click)="sendIdtoDelete(item.id ?? '')"> <i class="pi pi-trash" style="font-size: 15px"></i> Delete</a>
   </div>
 </div>

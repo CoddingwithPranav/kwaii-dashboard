@@ -25,7 +25,7 @@
 
     @defer(on timer(1s)) {
       @for (item of productData; track $index) {
-        <app-card [item]="item" (itemId)="NavigateToEdit($event)"></app-card>
+        <app-card [item]="item" (itemId)="NavigateToEdit($event)" (deleteItemId)="deleteProduct($event)"></app-card>
         }
     } @placeholder(minimum 500ms) {
 

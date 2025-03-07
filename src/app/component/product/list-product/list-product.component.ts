@@ -26,4 +26,8 @@ NavigateToAdd(){
   this.productService.productObj.next(null);
   this.router.navigate(['/product-add'])
 }
+
+deleteProduct(id:string){
+  this.productService.deleteData(id)
+}
 }

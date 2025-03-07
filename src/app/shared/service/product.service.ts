@@ -195,14 +195,16 @@ export class ProductService {
       });
   }
   deleteData(id: string) {
-    const docInstance = doc(this.firestore, 'posts', id);
+    const docInstance = doc(this.firestore, 'products', id);
+  debugger
+
     deleteDoc(docInstance).then(() => {
       ///this line will delete doc
     });
   }
 
   markFeatured(id: string, featuredData: object) {
-    const docInstance = doc(this.firestore, 'posts', id);
+    const docInstance = doc(this.firestore, 'products', id);
     updateDoc(docInstance, featuredData).then(() => {});
   }
 }
